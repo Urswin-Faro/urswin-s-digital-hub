@@ -9,7 +9,7 @@ import Home from "./pages/Home";
 import Shop from "./pages/Shop";
 import Services from "./pages/Services";
 import About from "./pages/About";
-import Availability from "./pages/Availability";
+// import Availability from "./pages/Availability";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 // 1. IMPORT THE CART PROVIDER
@@ -36,7 +36,7 @@ const App = () => (
                 <Route path="/cart" element={<Cart />} />
                 <Route path="/services" element={<Services />} />
                 <Route path="/about" element={<About />} />
-                <Route path="/availability" element={<Availability />} />
+                {/* <Route path="/availability" element={<Availability />} /> */}
                 <Route path="/contact" element={<Contact />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
