@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, ShoppingBag, Wrench, Star, CheckCircle2 } from "lucide-react";
+import { ArrowRight, ShoppingBag, Code, Star, CheckCircle2, FileText } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { products } from "@/data/products";
 import { serviceCategories } from "@/data/services";
@@ -9,29 +9,30 @@ import { ServiceCard } from "@/components/ServiceCard";
 const features = [
   {
     icon: ShoppingBag,
-    title: "Quality Products",
-    description: "Handpicked tech accessories and gadgets at competitive prices.",
+    title: "Curated Shop",
+    description: "Quality lifestyle products and essentials handpicked for you.",
   },
   {
-    icon: Wrench,
-    title: "Expert Services",
-    description: "Professional home maintenance, tech support, and errand running.",
+    icon: Code,
+    title: "Web Solutions",
+    description: "Modern, high-performance websites built to grow your brand.",
+  },
+  {
+    icon: FileText,
+    title: "Career Assets",
+    description: "Professional CV design and digital documents to help you stand out.",
   },
   {
     icon: Star,
     title: "Trusted Quality",
-    description: "Reliable service with satisfaction guaranteed on every order.",
-  },
-  {
-    icon: CheckCircle2,
-    title: "Easy Booking",
-    description: "Simple online booking system for all services and products.",
+    description: "Reliable service with a focus on professional excellence.",
   },
 ];
 
 export default function Home() {
+  // Take the first 4 products and services to show on home page
   const featuredProducts = products.slice(0, 4);
-  const featuredServices = serviceCategories[0].services.slice(0, 3);
+  const featuredServices = serviceCategories[0]?.services.slice(0, 4) || [];
 
   return (
     <main>
@@ -39,26 +40,24 @@ export default function Home() {
       <section className="relative overflow-hidden" style={{ background: "var(--hero-gradient)" }}>
         <div className="container-custom section-padding">
           <div className="max-w-3xl mx-auto text-center">
-            <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold mb-6 animate-fade-in-up opacity-0">
-              Your One-Stop Store for{" "}
-              <span className="text-accent">Products</span> &{" "}
-              <span className="text-accent">Personal Services</span>
+            <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold mb-6 animate-fade-in-up">
+              Your Hub for <span className="text-accent">Digital Excellence</span> & Quality Products
             </h1>
-            <p className="text-lg md:text-xl text-muted-foreground mb-8 animate-fade-in-up opacity-0 stagger-1">
-              Quality tech products and professional services tailored to your needs.
-              From smart gadgets to home maintenance — I've got you covered.
+            <p className="text-lg md:text-xl text-muted-foreground mb-8 animate-fade-in-up stagger-1">
+              From professional web development and career-boosting CVs to a curated 
+              selection of lifestyle products. Everything you need in one place.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up opacity-0 stagger-2">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up stagger-2">
               <Button variant="hero" size="xl" asChild>
-                <Link to="/shop">
-                  <ShoppingBag className="h-5 w-5 mr-2" />
-                  Shop Products
+                <Link to="/services">
+                  <Code className="h-5 w-5 mr-2" />
+                  Explore Services
                 </Link>
               </Button>
               <Button variant="hero-outline" size="xl" asChild>
-                <Link to="/services">
-                  View Services
-                  <ArrowRight className="h-5 w-5 ml-2" />
+                <Link to="/shop">
+                  <ShoppingBag className="h-5 w-5 mr-2" />
+                  Visit Shop
                 </Link>
               </Button>
             </div>
@@ -71,12 +70,12 @@ export default function Home() {
       </section>
 
       {/* Features Section */}
-      <section className="container-custom section-padding">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <section className="container-custom section-padding border-b border-border/50">
+        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {features.map((feature, index) => (
             <div
               key={feature.title}
-              className="text-center animate-fade-in-up opacity-0"
+              className="text-center animate-fade-in-up"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               <div className="w-14 h-14 rounded-2xl bg-accent/10 flex items-center justify-center mx-auto mb-4">
@@ -89,40 +88,12 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Featured Products */}
-      <section className="bg-secondary/30">
-        <div className="container-custom section-padding">
-          <div className="flex items-end justify-between mb-10">
-            <div>
-              <h2 className="font-serif text-3xl md:text-4xl font-bold mb-2">Featured Products</h2>
-              <p className="text-muted-foreground">Popular tech gadgets and accessories</p>
-            </div>
-            <Button variant="ghost" asChild className="hidden sm:flex">
-              <Link to="/shop">
-                View All
-                <ArrowRight className="h-4 w-4 ml-2" />
-              </Link>
-            </Button>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {featuredProducts.map((product) => (
-              <ProductCard key={product.id} product={product} />
-            ))}
-          </div>
-          <div className="mt-8 text-center sm:hidden">
-            <Button variant="outline" asChild>
-              <Link to="/shop">View All Products</Link>
-            </Button>
-          </div>
-        </div>
-      </section>
-
-      {/* Featured Services */}
+      {/* Featured Services - Moved up because Web Dev is your high-value offer */}
       <section className="container-custom section-padding">
         <div className="flex items-end justify-between mb-10">
           <div>
-            <h2 className="font-serif text-3xl md:text-4xl font-bold mb-2">Popular Services</h2>
-            <p className="text-muted-foreground">Professional assistance for your everyday needs</p>
+            <h2 className="font-serif text-3xl md:text-4xl font-bold mb-2">Professional Services</h2>
+            <p className="text-muted-foreground">Expert solutions for your digital and career needs</p>
           </div>
           <Button variant="ghost" asChild className="hidden sm:flex">
             <Link to="/services">
@@ -131,15 +102,34 @@ export default function Home() {
             </Link>
           </Button>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6">
           {featuredServices.map((service) => (
             <ServiceCard key={service.id} service={service} />
           ))}
         </div>
-        <div className="mt-8 text-center sm:hidden">
-          <Button variant="outline" asChild>
-            <Link to="/services">View All Services</Link>
-          </Button>
+      </section>
+
+      {/* Featured Products */}
+      <section className="bg-secondary/30">
+        <div className="container-custom section-padding">
+          <div className="flex items-end justify-between mb-10">
+            <div>
+              <h2 className="font-serif text-3xl md:text-4xl font-bold mb-2">Featured Products</h2>
+              <p className="text-muted-foreground">Quality items curated for your lifestyle</p>
+            </div>
+            <Button variant="ghost" asChild className="hidden sm:flex">
+              <Link to="/shop">
+                Browse Shop
+                <ArrowRight className="h-4 w-4 ml-2" />
+              </Link>
+            </Button>
+          </div>
+          {/* Using grid-cols-2 for consistent mobile view */}
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6">
+            {featuredProducts.map((product) => (
+              <ProductCard key={product.id} product={product} />
+            ))}
+          </div>
         </div>
       </section>
 
@@ -148,11 +138,11 @@ export default function Home() {
         <div className="container-custom section-padding">
           <div className="max-w-2xl mx-auto text-center">
             <h2 className="font-serif text-3xl md:text-4xl font-bold mb-4">
-              Ready to Get Started?
+              Ready to Build Your Project?
             </h2>
             <p className="text-primary-foreground/80 mb-8">
-              Whether you need a new gadget or professional help with a task,
-              I'm here to assist. Let's work together!
+              Whether you need a custom website, a professional CV, or have 
+              questions about our products, I'm here to help you succeed.
             </p>
             <Button variant="accent" size="xl" asChild>
               <Link to="/contact">

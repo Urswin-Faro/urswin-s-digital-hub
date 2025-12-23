@@ -105,7 +105,7 @@ export function Footer() {
                   className="flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors text-sm"
                 >
                   <Mail className="h-4 w-4" />
-                  hello@urswin.com
+                  urswinf@gmail.com
                 </a>
               </li>
               <li>
@@ -114,7 +114,7 @@ export function Footer() {
                   className="flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors text-sm"
                 >
                   <Phone className="h-4 w-4" />
-                  +27 12 345 6789
+                  +27 685190244
                 </a>
               </li>
               <li>

@@ -39,19 +39,19 @@ export default function Services() {
             >
               {/* Category Header */}
               <div className="flex items-center gap-4 mb-8">
-                <div className="w-14 h-14 rounded-2xl bg-accent/10 flex items-center justify-center">
-                  <IconComponent className="h-7 w-7 text-accent" />
+                <div className="w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-accent/10 flex items-center justify-center shrink-0">
+                  <IconComponent className="h-6 w-6 md:h-7 md:h-7 text-accent" />
                 </div>
                 <div>
-                  <h2 className="font-serif text-2xl md:text-3xl font-bold">
+                  <h2 className="font-serif text-xl md:text-3xl font-bold">
                     {category.name}
                   </h2>
-                  <p className="text-muted-foreground">{category.description}</p>
+                  <p className="text-sm md:text-base text-muted-foreground">{category.description}</p>
                 </div>
               </div>
 
-              {/* Services Grid */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+              {/* Services Grid - CHANGED: grid-cols-2 for mobile, adjusted gap */}
+              <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 md:gap-6">
                 {category.services.map((service) => (
                   <ServiceCard key={service.id} service={service} />
                 ))}

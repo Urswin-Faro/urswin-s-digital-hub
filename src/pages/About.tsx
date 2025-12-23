@@ -3,9 +3,30 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 
 const skills = {
-  tech: ["React", "TypeScript", "Node.js", "Python", "Database Design", "API Development", "UI/UX Design", "Git"],
-  homeTasks: ["Interior Painting", "Garden Maintenance", "Minor Repairs", "Bin Cleaning", "General Handywork"],
-  errands: ["Grocery Shopping", "Package Delivery", "Queueing Services", "Item Collection", "Personal Shopping"],
+  tech: [
+    "React",
+    "TypeScript",
+    "Node.js",
+    "Python",
+    "Database Design",
+    "API Development",
+    "UI/UX Design",
+    "Git",
+  ],
+  homeTasks: [
+    "Interior Painting",
+    "Garden Maintenance",
+    "Minor Repairs",
+    "Bin Cleaning",
+    "General Handywork",
+  ],
+  errands: [
+    "Grocery Shopping",
+    "Package Delivery",
+    "Queueing Services",
+    "Item Collection",
+    "Personal Shopping",
+  ],
 };
 
 const experience = [
@@ -13,7 +34,8 @@ const experience = [
     title: "Freelance Web Developer",
     company: "Self-Employed",
     period: "2021 - Present",
-    description: "Building custom web applications and providing technical consulting for small businesses.",
+    description:
+      "Building custom web applications and providing technical consulting for small businesses.",
   },
   {
     title: "Junior Software Developer",
@@ -25,7 +47,8 @@ const experience = [
     title: "IT Support Technician",
     company: "Digital Services Co.",
     period: "2017 - 2019",
-    description: "Provided technical support and troubleshooting for software and hardware issues.",
+    description:
+      "Provided technical support and troubleshooting for software and hardware issues.",
   },
 ];
 
@@ -49,12 +72,12 @@ export default function About() {
               {/* Avatar */}
               <div className="w-40 h-40 rounded-2xl bg-accent/10 flex items-center justify-center shrink-0 overflow-hidden">
                 <img
-                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=face"
+                  src="./public/UrswinPP.jpg"
                   alt="Urswin Faro"
                   className="w-full h-full object-cover"
                 />
               </div>
-              
+
               {/* Info */}
               <div className="text-center md:text-left">
                 <h1 className="font-serif text-4xl md:text-5xl font-bold mb-2">
@@ -64,15 +87,23 @@ export default function About() {
                   Entrepreneur & Service Provider
                 </p>
                 <p className="text-muted-foreground max-w-xl mb-6">
-                  I'm a versatile professional based in Cape Town, South Africa, offering quality 
-                  tech products alongside a range of personal and professional services. With a 
-                  background in technology and a passion for helping others, I strive to deliver 
+                  I'm a versatile professional based in Cape Town, South Africa, offering quality
+                  tech products alongside a range of personal and professional services. With a
+                  background in technology and a passion for helping others, I strive to deliver
                   excellent service in everything I do.
                 </p>
-                <Button variant="accent" size="lg">
-                  <Download className="h-4 w-4 mr-2" />
-                  Download CV
-                </Button>
+                <a
+                  href="/Urswin_Faro_CV.pdf" // Point to the file in the public folder
+                  download="Urswin_Faro_CV.pdf" // Suggests a download filename
+                  target="_blank" // Optional: Opens link in a new tab
+                >
+                  <Button variant="accent" size="lg" asChild>
+                    <span className="flex items-center">
+                      <Download className="h-4 w-4 mr-2" />
+                      Download CV
+                    </span>
+                  </Button>
+                </a>
               </div>
             </div>
           </div>
@@ -82,7 +113,7 @@ export default function About() {
       {/* Skills */}
       <section className="container-custom section-padding">
         <h2 className="font-serif text-3xl font-bold mb-8">Skills & Expertise</h2>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Tech Skills */}
           <div className="bg-card rounded-xl p-6 card-hover border border-border/50">
@@ -135,7 +166,7 @@ export default function About() {
       <section className="bg-secondary/30">
         <div className="container-custom section-padding">
           <h2 className="font-serif text-3xl font-bold mb-8">Experience</h2>
-          
+
           <div className="space-y-6 max-w-3xl">
             {experience.map((exp, index) => (
               <div
@@ -160,7 +191,7 @@ export default function About() {
       {/* Strengths */}
       <section className="container-custom section-padding">
         <h2 className="font-serif text-3xl font-bold mb-8">My Strengths</h2>
-        
+
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl">
           {strengths.map((strength) => (
             <div
