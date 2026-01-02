@@ -1,4 +1,4 @@
-import { ShoppingCart, Maximize2, Info } from "lucide-react";
+import { ShoppingCart, Info } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Product } from "@/data/products";
@@ -22,10 +22,13 @@ export function ProductCard({ product }: ProductCardProps) {
   const handleAddToCart = (e?: React.MouseEvent) => {
     if (e) e.stopPropagation();
     
+    // Updated to include image and description for the Cart page
     addToCart({
       id: Number(product.id),
       name: product.name,
       price: product.price,
+      image: product.image,
+      description: product.description,
     });
 
     toast({
@@ -43,6 +46,10 @@ export function ProductCard({ product }: ProductCardProps) {
               src={product.image}
               alt={product.name}
               className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+              onError={(e) => {
+                // Fallback if the path is broken
+                e.currentTarget.src = "https://placehold.co/600x600?text=No+Image";
+              }}
             />
             <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
               <div className="bg-background/90 px-4 py-2 rounded-full shadow-md flex items-center gap-2 text-sm font-medium">
@@ -58,7 +65,7 @@ export function ProductCard({ product }: ProductCardProps) {
         </DialogTrigger>
 
         {/* --- FULL PRODUCT INFO MODAL --- */}
-        <DialogContent className="max-w-4xl w-[95vw] p-0 overflow-hidden gap-0">
+        <DialogContent className="max-w-4xl w-[95vw] p-0 overflow-hidden gap-0 border-none shadow-2xl">
           <div className="flex flex-col md:flex-row h-full max-h-[90vh] overflow-y-auto">
             
             {/* Left Side: Large Image */}
@@ -66,12 +73,15 @@ export function ProductCard({ product }: ProductCardProps) {
               <img
                 src={product.image}
                 alt={product.name}
-                className="max-h-[400px] md:max-h-full w-auto object-contain rounded-lg"
+                className="max-h-[400px] md:max-h-full w-auto object-contain rounded-lg drop-shadow-lg"
+                onError={(e) => {
+                  e.currentTarget.src = "https://placehold.co/600x600?text=No+Image";
+                }}
               />
             </div>
 
             {/* Right Side: Details */}
-            <div className="w-full md:w-1/2 p-6 sm:p-8 flex flex-col">
+            <div className="w-full md:w-1/2 p-6 sm:p-8 flex flex-col bg-card">
               <DialogHeader className="text-left mb-4">
                 <Badge variant="outline" className="w-fit mb-2">{product.category}</Badge>
                 <DialogTitle className="font-serif text-2xl sm:text-3xl font-bold leading-tight">
@@ -102,7 +112,7 @@ export function ProductCard({ product }: ProductCardProps) {
                   size="lg"
                   disabled={!product.inStock}
                   onClick={() => handleAddToCart()}
-                  className="w-full gap-3 text-md h-12"
+                  className="w-full gap-3 text-md h-12 shadow-glow font-bold"
                 >
                   <ShoppingCart className="h-5 w-5" />
                   Add to Cart — R{product.price.toLocaleString()}
@@ -128,7 +138,7 @@ export function ProductCard({ product }: ProductCardProps) {
             size="sm"
             disabled={!product.inStock}
             onClick={handleAddToCart}
-            className="w-full gap-2 text-xs sm:text-sm"
+            className="w-full gap-2 text-xs sm:text-sm font-semibold"
           >
             <ShoppingCart className="h-4 w-4" />
             Add to Cart

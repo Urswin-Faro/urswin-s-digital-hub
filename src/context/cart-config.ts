@@ -8,15 +8,26 @@ export interface CartItem {
   name: string;
   price: number;
   quantity: number;
+  image: string;        // 🚀 NEW: Required to show images in the cart/checkout
+  description?: string; // 🚀 NEW: Optional, useful for the "Review Project" page
 }
 
 // Define the shape of the context object
 export interface CartContextType {
   cart: CartItem[];
-  addToCart: (product: { id: number; name: string; price: number }) => void;
-  // 🚀 NEW: Function to remove an item completely
+  // 🚀 UPDATED: addToCart now accepts the image URL
+  addToCart: (product: { 
+    id: number; 
+    name: string; 
+    price: number; 
+    image: string; 
+    description?: string 
+  }) => void;
+  
+  // Function to remove an item completely
   removeFromCart: (productId: number) => void;
-  // 🚀 NEW: Function to change the quantity of an item
+  
+  // Function to change the quantity of an item
   updateQuantity: (productId: number, newQuantity: number) => void;
 }
 
