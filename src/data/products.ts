@@ -17,40 +17,44 @@ export interface Product {
 export const products: Product[] = [
   {
     id: "1",
-    name: "The Top Laaitie",
-    description: "Duidelik style for the young kings. Your future is too bright not to wear these.",
+    name: "Side Steppers",
+    description:
+      "Double bridge, double confidence. Put these on and walk like the world owes you money.",
     price: 69.99,
-    image: glasses1, // Use the imported variable
+    image: glasses1,
     category: "Wearables",
     inStock: true,
   },
   {
     id: "2",
     name: "The Kroon Aviators",
-    description: "Top-tier double bridge frames. For when you're feeling like the main character.",
+    description:
+    "Smooth tint, sharp look. For when you want to look mysterious but still catch the taxi home.",
     price: 70.00,
-    image: glasses2, // Use the imported variable
+    image: glasses2,
     category: "Wearables",
     inStock: true,
   },
   {
     id: "3",
     name: "The Glad Square",
-    description: "Slick, tinted lenses that keep it smooth. Perfect for a sharp charf.",
+    description:
+      "Certified drip for the young kings. Wear these and suddenly everyone thinks you’ve got your life together.",
     price: 100.00,
-    image: glasses3, // Use the imported variable
+    image: glasses3,
     category: "Wearables",
     inStock: true,
   },
   {
     id: "4",
-    name: "The Dik-Doring Block",
-    description: "Thick, heavy-duty frames for that bold, dangerous streetwear look.",
+    name: "Top Laaitie Blokke",
+    description:
+      "Thick frames. Serious presence. These don’t whisper style — they shout it.",
     price: 80.00,
-    image: glasses4, // Use the imported variable
+    image: glasses4,
     category: "Wearables",
     inStock: true,
-  }
+  },
 ];
 
 export const productCategories = ["All", "Wearables", "Audio", "Accessories"];
