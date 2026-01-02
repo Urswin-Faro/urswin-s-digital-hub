@@ -19,7 +19,6 @@ export default function Shop() {
 
   return (
     <main>
-      {/* Header */}
       <section className="bg-secondary/30">
         <div className="container-custom section-padding pb-10">
           <div className="max-w-2xl">
@@ -33,9 +32,7 @@ export default function Shop() {
         </div>
       </section>
 
-      {/* Filters & Products */}
       <section className="container-custom py-10">
-        {/* Filter Bar */}
         <div className="flex flex-col sm:flex-row gap-4 mb-8">
           <div className="relative flex-1 max-w-md">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
@@ -61,12 +58,10 @@ export default function Shop() {
           </div>
         </div>
 
-        {/* Results count */}
         <p className="text-sm text-muted-foreground mb-6">
           Showing {filteredProducts.length} of {products.length} products
         </p>
 
-        {/* Products Grid - CHANGED: grid-cols-2 for mobile, smaller gap */}
         {filteredProducts.length > 0 ? (
           <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 md:gap-6">
             {filteredProducts.map((product) => (
