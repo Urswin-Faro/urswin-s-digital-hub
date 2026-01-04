@@ -34,20 +34,16 @@ export function Navbar() {
       <div className="container-custom">
         <div className="flex items-center justify-between h-16 md:h-20">
           
+          {/* Logo & Status Badge */}
           <div className="flex items-center gap-4">
-  <Link to="/" className="flex items-center gap-2">
-    {/* Container for the image logo */}
-    <div className="w-10 h-10 rounded-lg bg-accent overflow-hidden flex items-center justify-center shadow-sm">
-      <img 
-        src="/favicon.png" 
-        alt="Unfold Logo" 
-        className="w-full h-full object-contain p-1.5" 
-      />
-    </div>
-    <span className="font-serif text-xl font-semibold hidden lg:block tracking-tight">
-      Unfold
-    </span>
-  </Link>
+            <Link to="/" className="flex items-center gap-2">
+              <div className="w-10 h-10 rounded-lg bg-accent flex items-center justify-center shadow-sm">
+                <span className="font-serif text-xl font-bold text-accent-foreground">UF</span>
+              </div>
+              <span className="font-serif text-xl font-semibold hidden lg:block tracking-tight">
+                Unfold
+              </span>
+            </Link>
 
             {/* Dynamic Status Badge */}
             <div className={cn(
