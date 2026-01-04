@@ -30,7 +30,7 @@ export const products: Product[] = [
     name: "The Kroon Aviators",
     description:
     "Smooth tint, sharp look. For when you want to look mysterious but still catch the taxi home.",
-    price: 70.00,
+    price: 60.00,
     image: glasses2,
     category: "Wearables",
     inStock: true,
@@ -50,7 +50,7 @@ export const products: Product[] = [
     name: "Top Laaitie Blokke",
     description:
       "Thick frames. Serious presence. These don’t whisper style — they shout it.",
-    price: 80.00,
+    price: 70.00,
     image: glasses4,
     category: "Wearables",
     inStock: true,
