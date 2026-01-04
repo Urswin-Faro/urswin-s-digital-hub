@@ -41,7 +41,7 @@ export function Navbar() {
                 <span className="font-serif text-xl font-bold text-accent-foreground">UF</span>
               </div>
               <span className="font-serif text-xl font-semibold hidden lg:block tracking-tight">
-                Unfold
+                Unfold.
               </span>
             </Link>
 
