@@ -17,13 +17,13 @@ export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
   const { cart } = useCart();
-  
+
   // ==========================================
   // MANUAL AVAILABILITY TOGGLE
   // Set to 'true' for Green/Available
   // Set to 'false' for Red/Fully Booked
   // ==========================================
-  const isAvailable = true; 
+  const isAvailable = true;
   // ==========================================
 
   const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
@@ -33,23 +33,28 @@ export function Navbar() {
     <nav className="sticky top-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border">
       <div className="container-custom">
         <div className="flex items-center justify-between h-16 md:h-20">
-          
+
           {/* Logo & Status Badge */}
           <div className="flex items-center gap-4">
             <Link to="/" className="flex items-center gap-2">
-              <div className="w-10 h-10 rounded-lg bg-accent flex items-center justify-center shadow-sm">
-                <span className="font-serif text-xl font-bold text-accent-foreground">UF</span>
+              {/* Container for the image logo */}
+              <div className="w-10 h-10 rounded-lg bg-accent overflow-hidden flex items-center justify-center shadow-sm">
+                <img
+                  src="/favicon2.png"
+                  alt="Unfold Logo"
+                  className="w-full h-full object-contain p-1.5"
+                />
               </div>
               <span className="font-serif text-xl font-semibold hidden lg:block tracking-tight">
-                Unfold.
+                Unfold
               </span>
             </Link>
 
             {/* Dynamic Status Badge */}
             <div className={cn(
               "hidden md:flex items-center gap-2 px-3 py-1 rounded-full border transition-colors duration-500",
-              isAvailable 
-                ? "bg-emerald-500/10 border-emerald-500/20" 
+              isAvailable
+                ? "bg-emerald-500/10 border-emerald-500/20"
                 : "bg-red-500/10 border-red-500/20"
             )}>
               <span className="relative flex h-2 w-2">
@@ -95,12 +100,12 @@ export function Navbar() {
                 <ShoppingCart className="h-5 w-5" />
                 {totalItems > 0 && (
                   <span className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-accent text-accent-foreground text-xs flex items-center justify-center font-bold border-2 border-background animate-in zoom-in">
-                    {totalItems} 
+                    {totalItems}
                   </span>
                 )}
               </Button>
             </Link>
-            
+
             <Button variant={isAvailable ? "accent" : "outline"} asChild>
               <Link to="/contact">
                 {isAvailable ? "Get in Touch" : "Inquire Now"}
@@ -110,21 +115,21 @@ export function Navbar() {
 
           {/* Mobile Menu Actions */}
           <div className="flex items-center gap-2 md:hidden">
-             <Link to="/cart" className="relative p-2 text-foreground">
-                <ShoppingCart className="h-6 w-6" />
-                {totalItems > 0 && (
-                  <span className="absolute top-1 right-1 w-4 h-4 rounded-full bg-accent text-accent-foreground text-[10px] flex items-center justify-center font-bold border border-background">
-                    {totalItems}
-                  </span>
-                )}
-             </Link>
-             <button
-                className="p-2 rounded-lg hover:bg-secondary transition-colors"
-                onClick={() => setIsOpen(!isOpen)}
-                aria-label="Menu"
-              >
-                {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-              </button>
+            <Link to="/cart" className="relative p-2 text-foreground">
+              <ShoppingCart className="h-6 w-6" />
+              {totalItems > 0 && (
+                <span className="absolute top-1 right-1 w-4 h-4 rounded-full bg-accent text-accent-foreground text-[10px] flex items-center justify-center font-bold border border-background">
+                  {totalItems}
+                </span>
+              )}
+            </Link>
+            <button
+              className="p-2 rounded-lg hover:bg-secondary transition-colors"
+              onClick={() => setIsOpen(!isOpen)}
+              aria-label="Menu"
+            >
+              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            </button>
           </div>
         </div>
 
@@ -151,15 +156,15 @@ export function Navbar() {
                 {link.name}
               </Link>
             ))}
-            
+
             <div className="pt-4 mt-2 border-t border-border space-y-4">
               <div className="flex items-center gap-3 px-4">
                 <div className={cn(
-                  "h-2.5 w-2.5 rounded-full", 
+                  "h-2.5 w-2.5 rounded-full",
                   isAvailable ? "bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.5)]" : "bg-red-500"
                 )} />
                 <span className={cn(
-                  "text-xs font-bold uppercase tracking-wider", 
+                  "text-xs font-bold uppercase tracking-wider",
                   isAvailable ? "text-emerald-600" : "text-red-600"
                 )}>
                   {isAvailable ? "Currently accepting new projects" : "Currently fully booked"}
